@@ -3,14 +3,17 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class ApiKey extends Document {
-  @Prop({ required: true, index: true }) // Index for fast lookup
+  @Prop({ required: true, index: true })
   keyPrefix: string;
 
   @Prop({ required: true })
   serviceName: string;
 
   @Prop({ required: true })
-  keyHash: string; // The hashed version of the full key
+  keyHash: string;
+
+  @Prop({ required: false })
+  lastUsed: string;
 
   @Prop({ default: true })
   isActive: boolean;
